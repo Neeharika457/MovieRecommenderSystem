@@ -1,0 +1,31 @@
+import gzip
+
+with gzip.open('C:\\Users\\neeha\\Documents\\Neeharika\\ML practice\\Movie Recommender System\\IMDB\\name.basics.tsv.gz', 'rb') as f:
+    file_content = f.read().decode('utf-8')
+
+with open('name.basics.tsv', 'w', encoding='utf-8') as f:
+    f.write(file_content)
+
+	
+	
+	
+	
+	
+import gzip
+import json
+
+# with gzip.open('movie_ids_01_28_2023.json.gz', 'rb') as f:
+#    data = json.loads(f.read().decode('utf-8'))
+    
+filename = 'movie_ids_01_28_2023.json.gz'
+
+json_content = []
+with gzip.open(filename , 'rb') as gzip_file:
+    for line in gzip_file:  # Read one line.
+        line = line.rstrip()
+        print(line)
+        if line:  # Any JSON data on it?
+            obj = json.loads(line)
+            json_content.append(obj)
+
+print(json.dumps(json_content, indent=4))  # Pretty-print data parsed.   
